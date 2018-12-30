@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%block title%}
+게시판 -{{obj.headline}}
+
+
+{% endblock %}
+
+
+{% block content%}
+<h3> {{obj.headline}}</h3>
+<p>{{obj.author}}/{{obj.pub_date}}</p>
+<!-- 다운로드받을수 이는 파일 링트 -->
+{% for f in obj.postfile_set.all %}
+<a href="{{f.file.url}}"download>첨부파일</a>
+{% endfor %}
+<!-- 글에 첨부된 이미지 출력 -->
+{% for f in obj.postimage_set.all %}
+<imag src="{{i.image.url}}"width="30%"> <br>
+<pre> {{obj.content}}</pre>
+
+
+
+{% endblock %}

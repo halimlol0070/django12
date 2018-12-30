@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block title%}
+게시판
+{%endblock%}
+{% block content%}
+{% if page_obj.has_previous %}
+<a herf="?page={{page_obj.preious_page_number}}">이전페이지</a>
+
+{% if page_obj.has_next %}
+<a href="""?page={{page_obj.preious_page_number}}">다음페이지</a>
+{% endif %}
+<table width="90%">
+<tr>
+    <th> 글번호</th>
+    <th> 제목 </th>
+    <th> 작성자</th>
+    <th>작성일</th>
+ </tr>
+ {% for post in post_list%}
+<tr>
+<th> {{post.id}}</th>
+<th> <a href="{% url 'blog:detail' post.id%}">{{post.headline}}</a>
+</th>
+<th>{{post.author}}</th>
+<th>{{post.pub_date}}</th>
+</tr>
+</table>
+<a href="{% url 'blog:postP' %>글쓰기}</a>
+<a href="{% url 'blog:searchP' %>글쓰기}</a>
+
+{% endblock %}
